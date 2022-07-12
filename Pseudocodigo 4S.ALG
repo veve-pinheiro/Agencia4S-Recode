@@ -1,0 +1,127 @@
+
+Algoritmo "Agência de Viagens 4ESTAÇÕES"
+
+// Verônica Pinheiro Adame//
+// Cadastro e consulta de cliente e destino.//
+
+Var
+
+
+ Cliente:vetor[1..5, 0..5] de caractere
+ x, j: inteiro
+ Destino:vetor[1..5, 0..2] de caractere
+ z, y: inteiro
+
+ ClienteC: inteiro
+ DestinoD: inteiro
+
+
+ Opcao: inteiro
+ Num:inteiro
+
+
+ Menu:vetor[0..5] de caractere
+ MenuD:vetor[0..2] de caractere
+
+Inicio
+
+Menu[0] <- "Nome:"
+Menu[1] <- "CPF:"
+Menu[2] <- "E-mail:"
+Menu[3] <- "Cidade:"
+Menu[4] <- "Estado:"
+Menu[5] <- "Digite Sim para continuar:"
+
+MenuD[0] <- "Cidade:"
+MenuD[1] <- "Estado:"
+MenuD[2] <- "País:"
+
+enquanto verdadeiro faca
+    escreval(" MENU DE OPÇOES:")
+    escreval("1- Cadastro-Cliente")
+    escreval("2- Cadastro-Destino")
+    escreval("3- Consultar Cliente")
+    escreval("4- Consultar Destino")
+    escreval("5- Consultar cliente")
+    escreval("Sair")
+    leia(Opcao)
+
+    escolha Opcao
+       caso 1
+          limpatela
+           escreval(" CADASTRO DE CLIENTE :")
+           escreval(" Informe 1 para Pessoa Física ou  2 para Jurídica: ")
+           leia(ClienteC)
+               limpatela
+                   para x de 1 ate ClienteC faca
+                   escreval(" Digite os dados do cliente")
+                   escreval("Cliente: ", x)
+                   escreval(" ")
+                       para j de 0 ate 5 faca
+                           escreva(Menu[j])
+                           leia(Cliente[x,j])
+                       fimpara
+                   limpatela
+                   fimpara
+       caso 2
+           limpatela
+           escreval(" CADASTRO DE DESTINO :")
+           escreval(" Informe qual a data desejada para a viagem : ")
+           leia(DestinoD)
+               limpatela
+               escreval(" Digite os demais dados do destino: ")
+               escreval(" ")
+                   para z de 1 ate DestinoD faca
+                   escreval("Destino ", z)
+                       para y de 0 ate 2 faca
+                           escreva(MenuD[y])
+                           leia(Destino[z,y])
+                       fimpara
+                       limpatela
+                   fimpara
+
+       caso 3
+          limpatela
+          escreval("Cliente: ")
+          para x de 1 ate ClienteC faca
+                      escreva("id=", x)
+                      escreva(" - ")
+                      escreva(Cliente[x,0])
+                      escreva(" ")
+                      escreva(Cliente[x,1])
+                      escreval()
+          fimpara
+          escreval()
+       caso 4
+          limpatela
+          escreval("Destino: ")
+          para z de 1 ate DestinoD faca
+                      escreva(z)
+                      escreva(" - ")
+                      escreva(Destino[z,0])
+                      escreva(", ")
+                      escreva(Destino[z,1])
+                      escreva(", ")
+                      escreva(Destino[z,2])
+                      escreval()
+                      escreval()
+          fimpara
+
+          caso 5
+          limpatela
+          escreval("Informe o nome do cliente")
+          leia(Num)
+          limpatela
+          para j de 0 ate 5 faca
+               escreva(Menu[j])
+               escreva("  ")
+               escreval(Cliente[Num, j])
+          fimpara
+          escreval(" ")
+       fimescolha
+fimenquanto
+
+limpatela
+escreval("finalizado")
+
+Fimalgoritmo
