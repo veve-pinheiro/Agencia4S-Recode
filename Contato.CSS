@@ -1,0 +1,72 @@
+
+  
+  
+  /* Fale conosco */
+  .container-fluid .section-title{
+    /*margin-left: 40px;*/
+    text-align:left;
+    padding-bottom: 0;
+  }
+  .container-fluid .section-title h2{
+    color:cornflowerblue; 
+    font-size:35px;
+    padding-bottom: 0;
+  }
+  .container-fluid .section-title p{
+    font-size: 20px;
+    margin-bottom: 1rem;
+  }
+  
+  
+/*--------------------------------------------------------------
+  # Contato
+  --------------------------------------------------------------*/
+   .coluna-esquerda, a{
+    padding-right: 45px!important;
+  } 
+  
+  .coluna-direita {
+    padding-right: 0;
+    padding-left: 45px!important;
+  }
+  
+  .formulario-estilo {
+    background-color: #F3F1F4;
+    border: 1px solid cornflowerblue;
+    border-radius: .25rem;
+  }
+  
+  
+  
+  .formulario-estilo:focus {
+    background-color: #F3F1F4;
+    border: 1px solid cornflowerblue;
+    box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.25);
+  }
+  
+  .botao-enviar-mensagem {
+    background: cornflowerblue;
+    color: white;
+  }
+  
+  .botao-enviar-mensagem:hover {
+    transition: 1s all;
+    background: cornflowerblue;
+  }
+  
+  .contact .php-email-form button[type="submit"]:hover {
+    transition: 1s all;
+    background: cornflowerblue;
+  }
+  
+  
+  .contact .php-email-form button[type="submit"] {
+    background: lightslategray;
+    border:0;
+    /*padding: 10px 30px 30px;*/
+    color: #fff;
+    transition: 0.4s;
+    margin-top:54px;
+    } 
+  
+  
