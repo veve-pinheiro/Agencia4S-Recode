@@ -1,36 +1,71 @@
-﻿//Ivan Luís Süptitz (02/09/2020)
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Collections.Generic;
+using WebApplication3.Model;
 
 namespace WebApplication3.Model
 {
     public class DAL
     {
-        public List<Destinos> GetTodosJogadores()
+        private string _connectionString = "server=localhost;uid=root;pwd=;database=viagens"; // Ajuste conforme seu banco
+
+        // Método para recuperar todos os destinos
+        public List<Destinos> GetTodosDestinos()
         {
             List<Destinos> lst = new List<Destinos>();
 
-            MySqlConnection con = new MySqlConnection("server=localhost;uid=root;pwr=;database=clube");
-            con.Open(); //abrir a conexão
-
-            var cmd = con.CreateCommand();
-            cmd.CommandText = "SELECT * FROM jogador";//especifico a consulta
-            var dr = cmd.ExecuteReader();//abre o datareader
-            while (dr.Read())//se posiciona na linha seguinte
+            using (var con = new MySqlConnection(_connectionString))
             {
-                var j = new Destinos();
-                j.Nome = dr.GetString("nome");
-                j.Idade = dr.GetInt32("idade");
-                j.Posicao = dr.GetString("posicao");
+                con.Open();
+                var cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT * FROM destinos"; // Consulta os destinos
+                var dr = cmd.ExecuteReader(); // Abre o DataReader
 
-                lst.Add(j);//adicionando o jogador na lista
+                while (dr.Read()) // Lê as linhas
+                {
+                    var destino = new Destinos()
+                    {
+                        Id = dr.GetInt32("id"),
+                        Cidade = dr.GetString("cidade"),
+                        Estado = dr.GetString("estado"),
+                        Preco = dr.GetDouble("preco"),
+                        Descricao = dr.GetString("descricao")
+                    };
+
+                    lst.Add(destino); // Adiciona o destino na lista
+                }
+                dr.Close();
             }
-            dr.Close();//fechar o datareader
-            con.Close();//fechar a conexão
+
+            return lst;
+        }
+
+        // Método para recuperar todas as promoções
+        public List<Promocao> GetPromocoes()
+        {
+            List<Promocao> lst = new List<Promocao>();
+
+            using (var con = new MySqlConnection(_connectionString))
+            {
+                con.Open();
+                var cmd = con.CreateCommand();
+                cmd.CommandText = "SELECT * FROM promocoes"; // Consulta as promoções
+                var dr = cmd.ExecuteReader(); // Abre o DataReader
+
+                while (dr.Read()) // Lê as linhas
+                {
+                    var promocao = new Promocao()
+                    {
+                        Id = dr.GetInt32("id"),
+                        Nome = dr.GetString("nome"),
+                        Descricao = dr.GetString("descricao"),
+                        Desconto = dr.GetDouble("desconto"),
+                        DestinoId = dr.GetInt32("destino_id")
+                    };
+
+                    lst.Add(promocao); // Adiciona a promoção na lista
+                }
+                dr.Close();
+            }
 
             return lst;
         }
